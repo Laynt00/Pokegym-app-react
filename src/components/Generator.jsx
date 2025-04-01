@@ -26,12 +26,28 @@ export default function Generator() {
 	const [showModal, setShowModal] = useState(false)
 	const [destiny, setDestiny]     = useState('individual')
 	const [muscles, setMuscles]     = useState([])
-	const [coals, setGoals]			= useState('strength_power')
+	const [goal, setGoals]			= useState('strength_power')
 
 	// let showModal = false   This line won't work due to its an interactive element so we need a useState variable
 
 	function toggleModal() {
 		setShowModal(!showModal)
+	}
+
+	function updateMuscles(muscleGroup) {
+		if (muscles.length > 2) {
+			return
+		}
+
+		if (destiny !== 'individual') {
+			setMuscles([muscleGroup])
+			return
+		}
+
+		if (muscles.includes(muscleGroup)) {
+			setMuscles(muscles.filter())
+		}
+
 	}
 
 	return (
@@ -42,8 +58,10 @@ export default function Generator() {
 				 also when you render content like this you have to give the parent element a key that's unique (typeIndex in our case) */}
 			{Object.keys(WORKOUTS).map((type, typeIndex) => {
 				return(
-					<button className={'bg-slate-950 border  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg '
-										 + (type === destiny ? 'border-blue-600' : 'border-blue-400')} key={typeIndex}>
+					// We have to call the function with the useState setter cause if we'd called like toggleModal()
+					// it will be called when the page is actually painted
+					<button onClick={() => { setDestiny(type) }} className={'bg-slate-950 border  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg cursor-pointer'
+					 + (type === destiny ? ' border-blue-600 ' : ' border-blue-400')} key={typeIndex}>
 						<p className='capitalize'>
 							{type.replaceAll('_', " ")}
 						</p>
@@ -53,18 +71,24 @@ export default function Generator() {
 			</div>
 			<Header index={'02'} title={'Fija tus objetivos'} description={'Elige qué músculos machacar'}></Header>
 			<div className="bg-slate-950 p-3 border border-solid border-blue-400 rounded-lg flex flex-col">
-				<button onClick={() => {
-					setDestiny(type)
-				}
-
-				} className='relative flex items-center justify-center cursor-pointer'>
+				<button onClick={ toggleModal }className='relative flex items-center justify-center cursor-pointer'>
 					<p>Seleccione grupo muscular</p>
 					<i className="fa-solid fa-caret-down absolute right-3"></i>
 				</button>
 					{/*  Declare a condition to display so we need useState, either it wont work */}
 				{showModal && (
-					<div>
-						modal
+					<div className='flex flex-col px-3 pb-3'>
+						{/*  First condition is due to the WORKOUTS structure, we need to check wether
+								 is an string array or an object  */}
+						{(destiny === 'individual' ? WORKOUTS[destiny] : Object.keys(WORKOUTS[destiny])).map((muscleGroup, muscleGroupIndex) => {
+							return (
+								<button onClick={() => {
+									updateMuscles(muscleGroup)
+								}} key={muscleGroupIndex} className={'hover:text-blue-400 duration-200 ' + (muscles.includes(muscleGroup) ? ' text-blue-400' : ' ')}>
+									<p className='uppercase'>{muscleGroup.replaceAll('_', ' ')}</p>
+								</button>
+							)
+						})}
 					</div>
 				)}
 			</div>
@@ -74,7 +98,11 @@ export default function Generator() {
 				 also when you render content like this you have to give the parent element a key that's unique (typeIndex in our case) */}
 			{Object.keys(SCHEMES).map((scheme, schemeIndex) => {
 				return(
-					<button className='bg-slate-950 border  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg' key={schemeIndex}>
+					<button onClick={() => {
+						setGoals(scheme)
+					}
+					} className={'bg-slate-950 border  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg cursor-pointer'
+					 + (scheme === goal ? ' border-blue-600 ' : ' border-blue-400')} key={schemeIndex}>
 						<p className='capitalize'>
 							{scheme.replaceAll('_', " ")}
 						</p>
