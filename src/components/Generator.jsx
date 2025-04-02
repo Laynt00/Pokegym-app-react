@@ -57,8 +57,8 @@ export default function Generator(props) {
     }
 
 	return (
-		<SectionWrapper id={'generate'} header={"Crea tu entrenamiento"} title={["Son las", " a entrenar ", "en punto"]}>
-			<Header index={'01'} title={'Elige tu destino'} description={'Elige el entrenamiento que deseas mejorar'}></Header>
+		<SectionWrapper id={'generate'} header={"empieza ya"} title={["Son las", " mueve el culo ", "en punto"]}>
+			<Header index={'01'} title={'Tipo de entenamiento'} description={'Selecciona que entrenamiento realizar'}></Header>
 			<div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
 				{/*  We get the key object and call map() that calls the callbackfn one time for eachelement in the array WORKOUT
 				 also when you render content like this you have to give the parent element a key that's unique (typeIndex in our case) */}
@@ -102,7 +102,7 @@ export default function Generator(props) {
 					</div>
 				)}
 			</div>
-			<Header index={'03'} title={'Conviértete en Machoke'} description={'Selecciona tu objetivo final'}></Header>
+			<Header index={'03'} title={'Machaca'} description={'Selecciona tu objetivo final'}></Header>
 			<div className="grid grid-cols-3 gap-4">
 				{/*  We get the key object and call map() that calls the callbackfn one time for eachelement in the array WORKOUT
 				 also when you render content like this you have to give the parent element a key that's unique (typeIndex in our case) */}

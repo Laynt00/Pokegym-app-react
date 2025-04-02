@@ -20,12 +20,12 @@ export const SCHEMES = {
 
 export const WORKOUTS = {
     individual: ['biceps', 'triceps', 'pecho', 'espalda', 'hombros', 'cuádriceps', 'isquios', 'glúteos', 'gemelos', 'abdominales'],
-    Trío: {
+    trio: {
         push: ['triceps', 'pecho', 'hombros'],
         pull: ['espalda', 'hombros', 'biceps'],
         piernas: ['glúteos', 'gemelos', 'isquios', 'cuádriceps']
     },
-    bodybuilder: {
+    grupos: {
         pecho: ['pecho'],
         espalda: ['espalda'],
         hombros: ['hombros'],
@@ -33,7 +33,7 @@ export const WORKOUTS = {
         brazos: ['biceps', 'triceps'],
         abdominales: ['abdominales']
     },
-    hitmonlee_hitmonchan: {
+    superior_inferior: {
         tren_superior: ['triceps', 'biceps', 'hombros', 'pecho', 'espalda'],
         tren_inferior: ['cuádriceps', 'gemelos', 'isquios', 'glúteos']
     }
@@ -1769,7 +1769,7 @@ export const EXERCISES = {
         },
         unit: 'duration', //vs duration    
         muscles: ['abdominales'],
-        description: 'Lying flat on your espalda, pretend that your are a ripe and firm banana. Curve your whole body, crunching your core and lower espalda flat and firm down into the ground below you, and raise your pointed brazos off the ground, pointing out behind your head, and your piernas off the ground at a 30 degree angle. Shiver and quiver as your acknowledge your failing core muscles.',
+        description: 'Lying flat on your back, pretend that your are a ripe and firm banana. Curve your whole body, crunching your core and lower espalda flat and firm down into the ground below you, and raise your pointed brazos off the ground, pointing out behind your head, and your piernas off the ground at a 30 degree angle. Shiver and quiver as your acknowledge your failing core muscles.',
         substitutes: ['plank', 'leg_lifts']
     }
 }
